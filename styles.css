@@ -38,18 +38,45 @@ nav .nav-links a {
     font-size: 18px;
 }
 
+/* Hero Section with Slideshow Background */
 .hero {
-    background: url('image.jpg') no-repeat center center/cover;
-    color: #fff;
+    position: relative;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('image1.jpg') no-repeat center center/cover;
+    animation: slideBackground 16s infinite;
+    z-index: -1;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('image2.jpg') no-repeat center center/cover;
+    animation: slideBackground 16s infinite 8s;
+    z-index: -2;
 }
 
 .hero-content {
     max-width: 600px;
+    z-index: 1;
 }
 
 .hero h1 {
@@ -69,6 +96,16 @@ nav .nav-links a {
     text-decoration: none;
     font-size: 18px;
     border-radius: 5px;
+}
+
+/* Keyframes for Background Slideshow */
+@keyframes slideBackground {
+    0%, 100% {
+        opacity: 0;
+    }
+    25%, 75% {
+        opacity: 1;
+    }
 }
 
 .about, .services, .contact {
